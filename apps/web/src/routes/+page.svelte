@@ -171,12 +171,11 @@
 </script>
 
 <svelte:head>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    rel="preload"
-    href="/fonts/TiltPrism-Regular-VariableFont_XROT,YROT.ttf"
-    as="font"
-    type="font/ttf"
-    crossorigin="anonymous"
+    href="https://fonts.googleapis.com/css2?family=Tilt+Prism:XROT,YROT@0,0..90,90&display=swap"
+    rel="stylesheet"
   />
 </svelte:head>
 
@@ -197,7 +196,7 @@
 
       <h1
         class="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-['TiltPrism'] text-slate-300 z-10 pointer-events-none select-none"
-        style={`font-variation-settings: "XROT" ${$rotationY.y}, "YROT" ${$rotationX.x};`}
+        style={`font-family: 'TiltPrism', cursive;font-variation-settings: "XROT" ${$rotationY.y}, "YROT" ${$rotationX.x};`}
       >
         Cosaga
       </h1>
