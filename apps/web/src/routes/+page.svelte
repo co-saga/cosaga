@@ -5,7 +5,7 @@
   import { email, validators } from 'svelte-use-form';
   import { enhance } from '$app/forms';
 
-  let ParticlesComponent;
+  let ParticlesComponent: any;
   let userEmail = '';
 
   // rotation for the title h1
@@ -39,10 +39,6 @@
   });
 
   let particlesConfig = {
-    fullScreen: {
-      enable: false,
-      zIndex: 20
-    },
     particles: {
       color: {
         value: [
@@ -72,13 +68,7 @@
       },
       size: {
         value: 5,
-        random: true,
-        anim: {
-          enable: false,
-          speed: 1,
-          size_min: 4,
-          sync: false
-        }
+        random: true
       },
       links: {
         enable: true,
@@ -87,13 +77,7 @@
 
       opacity: {
         value: 1,
-        random: true,
-        anim: {
-          enable: true,
-          speed: 0.4,
-          opacity_min: 0.8,
-          sync: false
-        }
+        random: true
       },
       move: {
         enable: true,
@@ -101,7 +85,7 @@
         speed: 0.6,
         out_mode: 'out',
         attract: {
-          enable: true,
+          enable: false,
           rotateX: -2400,
           rotateY: 1600
         }
@@ -110,7 +94,7 @@
         value: 80,
         density: {
           enable: true,
-          value_area: 600
+          value_area: 800
         }
       }
     },
@@ -121,7 +105,7 @@
           enable: true,
           mode: 'grab',
           parallax: {
-            enable: true,
+            enable: false,
             force: 50,
             smooth: 100
           }
@@ -139,21 +123,8 @@
             opacity: 1
           }
         },
-        bubble: {
-          distance: 162,
-          size: 10,
-          duration: 3,
-          opacity: 0.6,
-          speed: 3
-        },
-        repulse: {
-          distance: 200
-        },
         push: {
           particles_nb: 1
-        },
-        remove: {
-          particles_nb: 2
         }
       }
     },
@@ -161,23 +132,30 @@
     fpsLimit: 60
   };
 
-  let onParticlesLoaded = (event) => {
+  let onParticlesLoaded = (event: { detail: { particles: any } }) => {
+    // particlesContainer can call methods like play, pause, refresh, start, stop
     const particlesContainer = event.detail.particles;
   };
 
-  let particlesInit = async (engine) => {
+  let particlesInit = async (engine: any) => {
     await loadSlim(engine);
   };
 </script>
 
 <svelte:head>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
   <link
     href="https://fonts.googleapis.com/css2?family=Tilt+Prism:XROT,YROT@0,0..90,90&display=swap"
     rel="stylesheet"
   />
-  <link rel="preload" href="/fonts/TiltPrism.ttf" as="font" type="font/truetype" crossorigin />
+  <link
+    rel="preload"
+    href="/fonts/TiltPrism.ttf"
+    as="font"
+    type="font/truetype"
+    crossorigin="anonymous"
+  />
 </svelte:head>
 
 <div class="flex flex-col items-center justify-start bg-surface-800">
