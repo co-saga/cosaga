@@ -14,6 +14,9 @@ const config = {
     extend: {
       screens: {
         xs: '320px'
+      },
+      fontFamily: {
+        tiltprism: 'TiltPrism'
       }
     }
   },
