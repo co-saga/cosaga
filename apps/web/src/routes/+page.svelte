@@ -170,6 +170,16 @@
   };
 </script>
 
+<svelte:head>
+  <link
+    rel="preload"
+    href="/fonts/TiltPrism-Regular-VariableFont_XROT,YROT.ttf"
+    as="font"
+    type="font/ttf"
+    crossorigin="anonymous"
+  />
+</svelte:head>
+
 <div class="flex flex-col items-center justify-start bg-surface-800">
   <div class="h-screen w-screen bg-gradient-to-t from-surface-800 to-surface-900">
     <div
