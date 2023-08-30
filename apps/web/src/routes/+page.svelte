@@ -29,6 +29,7 @@
 
   onMount(async () => {
     const container = document.querySelector('.h-screen');
+    const canvas = document.querySelector('#tsparticles');
 
     const updateRotation: any = (evt: MouseEvent) => {
       const rect = container!.getBoundingClientRect();
@@ -43,7 +44,17 @@
       }));
     };
 
+    const resetRotation: any = () => {
+      rotationX.update((currentRotation) => ({
+        x: 0
+      }));
+      rotationY.update((currentRotation) => ({
+        y: 0
+      }));
+    };
+
     container!.addEventListener('mousemove', updateRotation);
+    container!.addEventListener('mouseleave', resetRotation);
 
     const module = await import('svelte-particles');
 
