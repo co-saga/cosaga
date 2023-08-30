@@ -1,3 +1,4 @@
+import { fail } from '@sveltejs/kit';
 import { adminDB } from '../../lib/server/firebaseAdmin';
 import type { Actions, PageServerLoad } from './$types';
 export const load = (async () => {
@@ -14,11 +15,11 @@ export const actions: Actions = {
 
       await mailRef.set({ email });
       console.log('Email submitted successfully!');
-      return JSON.stringify({
-        message: 'Email submitted successfully!'
-      });
+      return {
+        success: true
+      };
     } catch (error) {
-      return error;
+      return fail(500, { email, error: 'Error submitting email' });
     }
   }
 };

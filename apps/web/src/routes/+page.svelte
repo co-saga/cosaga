@@ -4,6 +4,21 @@
   import { spring } from 'svelte/motion';
   import { email, validators } from 'svelte-use-form';
   import { enhance } from '$app/forms';
+  import { getToastStore } from '@skeletonlabs/skeleton';
+  import type { ToastSettings, ToastStore } from '@skeletonlabs/skeleton';
+  import type { ActionData } from './$types';
+  export let form: ActionData;
+
+  const toastStore = getToastStore();
+  const t: ToastSettings = {
+    message: 'Thank you for joining the waitlist! Stay tuned for more updates :)',
+    timeout: 30000,
+    background: 'bg-emerald-600 text-white'
+  };
+
+  $: if (form?.success) {
+    toastStore.trigger(t);
+  }
 
   let ParticlesComponent: any;
   let userEmail = '';
@@ -195,10 +210,18 @@
           placeholder="Enter your email..."
           use:validators={[email]}
         />
-        <button
-          class="btn text-emerald-100 lg:text-lg md:text-base sm:text-xs font-medium h-12 rounded-l-none rounded-r-full"
-          >Join the waitlist</button
-        >
+        {#if form?.success}
+          <div
+            class="btn text-emerald-100 lg:text-lg md:text-base sm:text-xs font-medium h-12 rounded-l-none rounded-r-full variant-glass pointer-events-none"
+          >
+            You've been added!
+          </div>
+        {:else}
+          <button
+            class="btn text-emerald-100 lg:text-lg md:text-base sm:text-xs font-medium h-12 rounded-l-none rounded-r-full"
+            >Join the waitlist</button
+          >
+        {/if}
       </form>
     </div>
   </div>
