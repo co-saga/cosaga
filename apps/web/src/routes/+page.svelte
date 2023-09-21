@@ -11,7 +11,7 @@
 
   const toastStore = getToastStore();
   const t: ToastSettings = {
-    message: 'Thank you for joining the waitlist! Stay tuned for more updates :)',
+    message: "thank you for the interest! we'll be in touch.",
     timeout: 30000,
     background: 'bg-emerald-600 text-white'
   };
@@ -187,7 +187,7 @@
 <div class="flex flex-col items-center justify-start bg-surface-800">
   <div class="h-screen w-screen bg-gradient-to-t from-surface-800 to-surface-900">
     <div
-      class="absolute flex flex-col items-center justify-center bg-surface-700 shadow-lg shadow-primary-900/10 inset-4 sm:inset-6 lg:inset-12 !bottom-28 md:!bottom-28 rounded-3xl overflow-hidden"
+      class="absolute flex flex-col items-center justify-center bg-surface-700 shadow-lg shadow-primary-900/10 inset-2 sm:inset-4 lg:inset-x-12 !bottom-28 md:!bottom-28 rounded-3xl overflow-hidden"
     >
       <svelte:component
         this={ParticlesComponent}
@@ -203,7 +203,7 @@
         class="font-tiltprism text-6xl sm:text-7xl md:text-8xl lg:text-9xl text-slate-300 z-10 pointer-events-none select-none"
         style={`font-variation-settings: "XROT" ${$rotationY.y}, "YROT" ${$rotationX.x};`}
       >
-        Cosaga
+        cosaga
       </h1>
     </div>
 
@@ -215,51 +215,86 @@
       >
         <input
           bind:value={userEmail}
-          class="lg:text-lg md:text-base sm:text-xs font-sans rounded-l-full border-none h-12 pl-3 ml-[1px] xs:max-w-[150px] sm:max-w-max"
+          class="lg:text-lg md:text-base sm:text-xs font-sans font-thin rounded-full border-none h-12 pl-3 ml-[1px] xs:max-w-[150px] sm:max-w-max"
           type="email"
           name="email"
-          placeholder="Enter your email..."
+          placeholder="email"
           use:validators={[email]}
         />
         {#if form?.success}
           <div
             class="btn text-emerald-100 lg:text-lg md:text-base sm:text-xs font-medium h-12 rounded-l-none rounded-r-full variant-glass pointer-events-none"
           >
-            You've been added!
+            added!
           </div>
         {:else}
           <button
-            class="btn text-emerald-100 lg:text-lg md:text-base sm:text-xs font-medium h-12 rounded-l-none rounded-r-full"
-            >Join the waitlist</button
+            class="btn text-emerald-100 lg:text-lg md:text-base sm:text-xs font-medium h-12 font-thin rounded-l-none rounded-r-full"
+            >more info</button
           >
         {/if}
       </form>
+    </div>
+
+    <div
+      class="absolute bottom-11 lg:left-auto lg:right-36 md:right-36 sm:left-16 xs:hidden sm:block"
+    >
+      <a
+        class="text-slate-300 font-thin text-xl"
+        href="https://github.com/co-saga/cosaga"
+        target="_blank">Github</a
+      >
+    </div>
+
+    <div class="absolute bottom-11 xs:right-8 sm:right-16 xs:hidden sm:block">
+      <a class="text-slate-300 font-thin text-xl" href="https://x.com/_cosaga" target="_blank">X</a>
     </div>
   </div>
   <div class="relative h-auto w-full">
     <div
       class="relative mx-auto flex w-full max-w-4xl flex-col gap-16 overflow-hidden p-8 leading-relaxed text-blue-100 max-md:mt-16 md:p-16"
     >
-      <section class="flex flex-col gap-12 text-slate-300">
-        <div>
-          <h2
-            class="text-2xl sm:text-2xl md:text-3xl lg:text-3xl font-mono text-slate-300 z-10 pointer-events-none select-none"
-          >
-            About
-          </h2>
+      <section class="flex flex-col gap-8 text-slate-300">
+        <p class="font-serif self-center text-2xl font-extralight font-thin">
+          co- from Latin, meaning "with, together, jointly"
+        </p>
+        <div class="mb-4">
           <br />
           <p class="font-mono">
-            Cosaga is an open-source project to create a storytelling & social networking platform
-            centered around real collaboration.
+            If you could design a social media platform from the ground up, what would you do? What
+            changes would you make to your current favorite platforms? How would you tune the
+            recommendation system? Would it be private or open source? Would it be something your
+            friends would actually use?
           </p>
           <br />
           <p class="font-mono">
-            We believe the platforms we use to connect with each other should be built openly,
-            designed with purpose, and fun to use.
+            Every useful app captures its own slice of life. Uber is about getting places. Instagram
+            is for sharing photos. LinkedIn is essentially the modern resume.
+          </p>
+          <br />
+          <p class="font-mono">And Cosaga?</p>
+        </div>
+        <p class="font-serif self-center text-2xl font-extralight font-thin">
+          saga: a long story of heroic achievement
+        </p>
+
+        <div>
+          <br />
+          <p class="font-mono">
+            Cosaga is an experiment, a challenge, a saga in its own right. It's the idea that anyone
+            can get together and mold the Internet to their liking. Software is no longer the
+            challenge. AI can write most of it. The question is: what do you want?
+          </p>
+          <br />
+          <p class="font-mono">
+            <b>Serendipity. Collaboration. Profiles that actually tell a story.</b> I think it would
+            be nice to have a social app built around these principles.
           </p>
         </div>
+        <p class="font-mono self-end">- Thomas Zhao, September 2023</p>
+
         <hr class="border-slate-300" />
-        <div class="font-mono">
+        <div class="font-mono mt-4">
           <h2
             class="text-2xl sm:text-2xl md:text-3xl lg:text-3xl font-mono text-slate-300 z-10 pointer-events-none select-none"
           >
@@ -267,19 +302,16 @@
           </h2>
           <br />
           <h3 class="text-lg">Planned September 2023</h3>
-          <p class="text-slate-400 text-sm">
-            User authentication, profiles, and settings. Basic timeline & posting. Tag collaborators
-            and form connections through posts. Pre-alpha launch.
-          </p>
+          <p class="text-slate-400 text-sm">User authentication and basic profiles.</p>
           <br />
           <h3 class="text-lg">Planned October 2023</h3>
           <p class="text-slate-400 text-sm">
-            Replies & react mechanics. Point/karma system. Basic feed & searching.
+            Timelines and posting. Tag collaborators and form connections through posts.
           </p>
           <br />
           <h3 class="text-lg">Planned November 2023</h3>
           <p class="text-slate-400 text-sm">
-            Link Twitter account mechanics. Creator analytics. More sophisticated recommendations.
+            Replies & react mechanics. Point/karma system. Basic feed & searching.
           </p>
         </div>
         <hr class="border-slate-300" />
@@ -291,15 +323,11 @@
           </h2>
           <br />
           <p class="">
-            For updates or questions connect on <a
-              class="underline"
-              href="https://twitter.com/_cosaga">Twitter @_cosaga</a
-            >
+            Let's connect <a class="underline" href="https://twitter.com/_cosaga">@_cosaga</a>
           </p>
           <br />
           <p class="">
-            Check out <a class="underline" href="https://github.com/co-saga/cosaga">the Github</a> and
-            help contribute!
+            <a class="underline" href="https://github.com/co-saga/cosaga">Contribute on Github</a>
           </p>
         </div>
       </section>
