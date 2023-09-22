@@ -12,6 +12,8 @@
     "format": "prettier --write --ignore-path=../../.prettierignore ."
   },
   "dependencies": {
+    "@supabase/auth-helpers-sveltekit": "^0.10.3",
+    "@supabase/supabase-js": "^2.36.0",
     "firebase": "^10.3.0",
     "firebase-admin": "^11.10.1",
     "svelte-particles": "^2.12.0",
